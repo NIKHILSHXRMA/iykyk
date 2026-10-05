@@ -51,9 +51,9 @@ function Hero() {
           className="text-[#e8a0b5]"
         />
 
-        {/* <span className="text-[9px] uppercase tracking-[0.35em] text-white/60">
+        <span className="text-[9px] uppercase tracking-[0.35em] text-white/60">
           A story about you
-        </span> */}
+        </span>
       </motion.div>
 
       {/* =========================

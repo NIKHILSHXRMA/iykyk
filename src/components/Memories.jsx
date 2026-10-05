@@ -7,28 +7,28 @@ const memories = [
     number: "01",
     title: "The moment I noticed you",
     text: "Some moments don't look special when they happen. Later, you realize they quietly changed everything.",
-    image: "/public/photos/komal-04.jpg",
+    image: "/photos/komal-01.jpg",
   },
   {
     date: "SOMEWHERE ALONG THE WAY",
     number: "02",
     title: "You became special",
     text: "Without even trying, you slowly became someone I started looking forward to.",
-    image: "/public/photos/komal-08.jpg",
+    image: "/photos/komal-02.jpg",
   },
   {
     date: "THE LITTLE THINGS",
     number: "03",
     title: "It's always the little things",
     text: "The conversations, the smiles, the random moments — somehow they all mean more than they should.",
-    image: "/public/photos/komal-06.jpg",
+    image: "/photos/komal-03.jpg",
   },
   {
     date: "TODAY",
     number: "04",
     title: "And here we are",
     text: "Maybe this isn't just another memory. Maybe it's the beginning of something beautiful.",
-    image: "/public/photos/komal-01.jpg",
+    image: "/photos/komal-04.jpg",
   },
 ];
 
@@ -38,10 +38,8 @@ function Memories() {
       id="memories"
       className="relative overflow-hidden bg-[#08060a] px-5 py-28 sm:px-8 lg:px-16"
     >
-      {/* Background glow */}
       <div className="pointer-events-none absolute left-1/2 top-40 h-125 w-125 -translate-x-1/2 rounded-full bg-[#d86b91]/10 blur-[140px]" />
 
-      {/* Top heading */}
       <div className="relative mx-auto mb-20 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -72,7 +70,9 @@ function Memories() {
         >
           A few moments
           <br />
-          <span className="italic text-[#e8a0b5]">worth remembering.</span>
+          <span className="italic text-[#e8a0b5]">
+            worth remembering.
+          </span>
         </motion.h2>
 
         <motion.p
@@ -86,7 +86,6 @@ function Memories() {
         </motion.p>
       </div>
 
-      {/* Memories */}
       <div className="relative mx-auto max-w-6xl">
         <div className="space-y-24">
           {memories.map((memory, index) => (
@@ -109,10 +108,11 @@ function Memories() {
                 delay: index * 0.05,
               }}
               className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-20 ${
-                index % 2 !== 0 ? "lg:[&>*:first-child]:order-2" : ""
+                index % 2 !== 0
+                  ? "lg:[&>*:first-child]:order-2"
+                  : ""
               }`}
             >
-              {/* Image */}
               <div className="group relative">
                 <div className="absolute -inset-3 rounded-4xl bg-[#e8a0b5]/5 opacity-0 blur-2xl transition duration-700 group-hover:opacity-100" />
 
@@ -123,17 +123,14 @@ function Memories() {
                     className="h-full w-full object-cover grayscale-20 transition duration-1000 group-hover:scale-105 group-hover:grayscale-0"
                   />
 
-                  {/* Image overlay */}
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-black/10" />
 
-                  {/* Number */}
                   <div className="absolute left-5 top-5">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/20 font-serif text-sm text-white backdrop-blur-md">
                       {memory.number}
                     </span>
                   </div>
 
-                  {/* Bottom label */}
                   <div className="absolute bottom-5 left-5">
                     <p className="text-[9px] uppercase tracking-[0.3em] text-white/60">
                       Memory
@@ -142,7 +139,6 @@ function Memories() {
                 </div>
               </div>
 
-              {/* Text */}
               <div className="relative">
                 <p className="text-[9px] uppercase tracking-[0.35em] text-[#e8a0b5]">
                   {memory.date}
@@ -185,7 +181,6 @@ function Memories() {
         </div>
       </div>
 
-      {/* Bottom transition */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -71,7 +71,7 @@ function Story() {
             <div className="relative aspect-4/5 overflow-hidden bg-[#120b10]">
 
               <img
-                src="/public/photos/komal-05.jpg"
+                src="/photos/komal-09.jpg"
                 alt="Komal"
                 className="h-full w-full object-cover transition duration-1000 hover:scale-105"
               />
