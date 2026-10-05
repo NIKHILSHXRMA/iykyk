@@ -5,10 +5,9 @@ function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed left-0 top-0 z-100 h-0.5 origin-left bg-[#e8a0b5]"
+      className="fixed left-0 top-0 z-100 h-0.5 w-full origin-left bg-[#e8a0b5]"
       style={{
         scaleX: scrollYProgress,
-        width: "100%",
       }}
     />
   );

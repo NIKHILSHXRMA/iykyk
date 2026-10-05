@@ -36,15 +36,15 @@ function Reasons() {
       className="relative overflow-hidden bg-[#08060a] px-6 py-28 sm:px-10 lg:px-20"
     >
       {/* Background Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/3 h-112.5 w-112.5 -translate-x-1/2 rounded-full bg-[#e8a0b5]/5 blur-[130px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-[#e8a0b5]/5 blur-[70px]" />
 
       <div className="relative mx-auto max-w-6xl">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45 }}
           className="mb-16 text-center"
         >
           <div className="mb-5 flex items-center justify-center gap-3">
@@ -80,15 +80,17 @@ function Reasons() {
           {reasons.map((reason, index) => (
             <motion.div
               key={reason.number}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.08,
+              viewport={{
+                once: true,
+                amount: 0.1,
               }}
-              whileHover={{ y: -6 }}
-              className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-[#110b10]/70 p-7 backdrop-blur-xl transition-colors duration-500 hover:border-[#e8a0b5]/25 ${
+              transition={{
+                duration: 0.45,
+                ease: "easeOut",
+              }}
+              className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-[#110b10]/90 p-7 transition-colors duration-200 hover:border-[#e8a0b5]/25 ${
                 index === 0 || index === 4
                   ? "lg:col-span-2"
                   : ""
@@ -96,14 +98,14 @@ function Reasons() {
             >
               {/* Number */}
               <div className="flex items-start justify-between">
-                <span className="font-serif text-4xl text-white/8 transition-colors duration-500 group-hover:text-[#e8a0b5]/20">
+                <span className="font-serif text-4xl text-white/8 transition-colors duration-200 group-hover:text-[#e8a0b5]/20">
                   {reason.number}
                 </span>
 
                 <Heart
                   size={18}
                   strokeWidth={1.2}
-                  className="text-[#e8a0b5]/40 transition-all duration-500 group-hover:scale-110 group-hover:text-[#e8a0b5]"
+                  className="text-[#e8a0b5]/40 transition-colors duration-200 group-hover:text-[#e8a0b5]"
                 />
               </div>
 
@@ -119,12 +121,7 @@ function Reasons() {
               </div>
 
               {/* Bottom Line */}
-              <motion.div
-                className="absolute bottom-0 left-0 h-px bg-[#e8a0b5]"
-                initial={{ width: 0 }}
-                whileHover={{ width: "100%" }}
-                transition={{ duration: 0.5 }}
-              />
+              <div className="absolute bottom-0 left-0 h-px w-0 bg-[#e8a0b5] transition-[width] duration-300 group-hover:w-full" />
             </motion.div>
           ))}
         </div>
@@ -133,8 +130,8 @@ function Reasons() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, delay: 0.05 }}
           className="mt-16 text-center"
         >
           <p className="font-serif text-lg italic text-white/35">

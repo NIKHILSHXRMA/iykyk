@@ -10,8 +10,8 @@ function Proposal() {
   });
 
   const moveNoButton = () => {
-    const randomX = Math.floor(Math.random() * 220) - 110;
-    const randomY = Math.floor(Math.random() * 160) - 80;
+    const randomX = Math.floor(Math.random() * 180) - 90;
+    const randomY = Math.floor(Math.random() * 120) - 60;
 
     setNoPosition({
       x: randomX,
@@ -26,59 +26,34 @@ function Proposal() {
     >
       {/* Background glows */}
 
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-150600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e8a0b5]/10 blur-[160px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e8a0b5]/8 blur-[70px]" />
 
-      <div className="pointer-events-none absolute left-[10%] top-[20%] h-40 w-40 rounded-full bg-pink-500/5 blur-[100px]" />
+      <div className="pointer-events-none absolute left-[10%] top-[20%] h-32 w-32 rounded-full bg-pink-500/5 blur-[70px]" />
 
-      <div className="pointer-events-none absolute bottom-[10%] right-[10%] h-40 w-40 rounded-full bg-purple-500/5 blur-[100px]" />
+      <div className="pointer-events-none absolute bottom-[10%] right-[10%] h-32 w-32 rounded-full bg-purple-500/5 blur-[70px]" />
 
-      {/* Floating stars */}
+      {/* Decorative stars */}
 
-      <motion.div
-        animate={{
-          y: [0, -15, 0],
-          rotate: [0, 10, 0],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute left-[15%] top-[20%] text-[#e8a0b5]/40"
-      >
-        <Sparkles size={20} strokeWidth={1} />
-      </motion.div>
+      <div className="pointer-events-none absolute left-[15%] top-[20%] text-[#e8a0b5]/30">
+        <Sparkles size={18} strokeWidth={1} />
+      </div>
 
-      <motion.div
-        animate={{
-          y: [0, 15, 0],
-          rotate: [0, -10, 0],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-[20%] right-[15%] text-[#e8a0b5]/30"
-      >
-        <Stars size={24} strokeWidth={1} />
-      </motion.div>
+      <div className="pointer-events-none absolute bottom-[20%] right-[15%] text-[#e8a0b5]/25">
+        <Stars size={21} strokeWidth={1} />
+      </div>
 
       {/* Main content */}
 
       <div className="relative z-10 mx-auto w-full max-w-4xl text-center">
-
         <AnimatePresence mode="wait">
-
           {!accepted ? (
             <motion.div
               key="question"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.8 }}
+              exit={{ opacity: 0, y: -18 }}
+              transition={{ duration: 0.5 }}
             >
-
               {/* Chapter */}
 
               <div className="mb-8 flex items-center justify-center gap-3">
@@ -100,14 +75,9 @@ function Proposal() {
               {/* Heart */}
 
               <motion.div
-                animate={{
-                  scale: [1, 1.08, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.45 }}
                 className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full border border-[#e8a0b5]/20 bg-[#e8a0b5]/5"
               >
                 <Heart
@@ -139,21 +109,15 @@ function Proposal() {
               {/* Buttons */}
 
               <div className="relative mx-auto mt-12 flex min-h-17.5 max-w-md items-center justify-center gap-5">
-
                 <motion.button
                   type="button"
                   onClick={() => setAccepted(true)}
-                  whileHover={{
-                    scale: 1.06,
-                  }}
-                  whileTap={{
-                    scale: 0.96,
-                  }}
-                  className="group flex cursor-pointer items-center gap-3 rounded-full bg-[#e8a0b5] px-8 py-4 text-sm font-medium text-[#160b10] shadow-[0_0_40px_rgba(232,160,181,0.15)] transition"
+                  whileTap={{ scale: 0.96 }}
+                  className="group flex cursor-pointer items-center gap-3 rounded-full bg-[#e8a0b5] px-8 py-4 text-sm font-medium text-[#160b10] shadow-[0_0_30px_rgba(232,160,181,0.12)]"
                 >
                   <Heart
                     size={16}
-                    className="transition group-hover:fill-current"
+                    className="group-active:fill-current"
                   />
 
                   Yes, I will
@@ -170,49 +134,44 @@ function Proposal() {
                   transition={{
                     type: "spring",
                     stiffness: 300,
-                    damping: 15,
+                    damping: 18,
                   }}
-                  className="cursor-pointer rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm text-white/50 backdrop-blur-xl transition hover:text-white"
+                  className="cursor-pointer rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm text-white/50 transition-colors duration-200 hover:text-white"
                 >
                   No
                 </motion.button>
-
               </div>
 
               <p className="mt-6 text-[9px] uppercase tracking-[0.3em] text-white/20">
                 Think carefully ♡
               </p>
-
             </motion.div>
           ) : (
-
             <motion.div
               key="accepted"
-              initial={{ opacity: 0, scale: 0.85 }}
+              initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{
-                duration: 1,
+                duration: 0.55,
                 ease: "easeOut",
               }}
             >
-
               {/* Celebration heart */}
 
               <motion.div
                 initial={{
-                  scale: 0,
-                  rotate: -20,
+                  scale: 0.7,
+                  opacity: 0,
                 }}
                 animate={{
                   scale: 1,
-                  rotate: 0,
+                  opacity: 1,
                 }}
                 transition={{
-                  delay: 0.2,
-                  duration: 0.8,
-                  type: "spring",
+                  duration: 0.55,
+                  ease: "easeOut",
                 }}
-                className="mx-auto mb-10 flex h-24 w-24 items-center justify-center rounded-full border border-[#e8a0b5]/30 bg-[#e8a0b5]/10 shadow-[0_0_80px_rgba(232,160,181,0.15)]"
+                className="mx-auto mb-10 flex h-24 w-24 items-center justify-center rounded-full border border-[#e8a0b5]/30 bg-[#e8a0b5]/10 shadow-[0_0_50px_rgba(232,160,181,0.12)]"
               >
                 <Heart
                   size={38}
@@ -239,11 +198,11 @@ function Proposal() {
               </p>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  delay: 0.8,
-                  duration: 0.8,
+                  delay: 0.45,
+                  duration: 0.45,
                 }}
                 className="mt-12"
               >
@@ -258,10 +217,8 @@ function Proposal() {
                   />
                 </div>
               </motion.div>
-
             </motion.div>
           )}
-
         </AnimatePresence>
       </div>
     </section>

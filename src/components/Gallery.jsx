@@ -45,18 +45,17 @@ function Gallery() {
   return (
     <section
       id="gallery"
-      className="relative overflow-hidden bg-[#08060a] px-5 py-32 sm:px-8 lg:px-16"
+      className="relative overflow-hidden bg-[#08060a] px-5 py-28 sm:px-8 lg:px-16"
     >
-      <div className="pointer-events-none absolute left-1/2 top-1/3 h-125 w-125 -translate-x-1/2 rounded-full bg-[#e8a0b5]/10 blur-[150px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-[#e8a0b5]/10 blur-[70px]" />
 
       <div className="relative mx-auto max-w-7xl">
-
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-16 text-center"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+          className="mb-14 text-center"
         >
           <div className="mb-5 flex items-center justify-center gap-3">
             <span className="h-px w-10 bg-[#e8a0b5]/40" />
@@ -89,21 +88,20 @@ function Gallery() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.5 }}
           className="relative"
         >
-
           <Swiper
             modules={[EffectCoverflow, Navigation, Pagination]}
             effect="coverflow"
-            centeredSlides={true}
-            slidesPerView={1.15}
-            spaceBetween={20}
-            loop={true}
-            grabCursor={true}
+            centeredSlides
+            slidesPerView={1.12}
+            spaceBetween={16}
+            loop
+            grabCursor
             navigation={{
               prevEl: ".gallery-prev",
               nextEl: ".gallery-next",
@@ -114,39 +112,54 @@ function Gallery() {
             coverflowEffect={{
               rotate: 0,
               stretch: 0,
-              depth: 180,
-              modifier: 1.2,
+              depth: 100,
+              modifier: 1,
               slideShadows: false,
             }}
             breakpoints={{
               640: {
-                slidesPerView: 1.6,
-                spaceBetween: 25,
+                slidesPerView: 1.5,
+                spaceBetween: 22,
               },
               1024: {
-                slidesPerView: 2.3,
-                spaceBetween: 35,
+                slidesPerView: 2.2,
+                spaceBetween: 30,
+                coverflowEffect: {
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 140,
+                  modifier: 1,
+                  slideShadows: false,
+                },
               },
               1280: {
-                slidesPerView: 2.7,
-                spaceBetween: 40,
+                slidesPerView: 2.6,
+                spaceBetween: 35,
+                coverflowEffect: {
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 160,
+                  modifier: 1,
+                  slideShadows: false,
+                },
               },
             }}
             className="gallery-swiper overflow-visible!"
           >
             {photos.map((photo, index) => (
               <SwiperSlide key={photo.image}>
-                <div className="group relative mx-auto aspect-3/4 max-w-97.5 overflow-hidden rounded-3xl border border-white/10 bg-[#110c12] shadow-2xl">
-
+                <div className="relative mx-auto aspect-3/4 max-w-97.5 overflow-hidden rounded-3xl border border-white/10 bg-[#110c12] shadow-xl">
                   <img
                     src={photo.image}
                     alt={photo.title}
-                    className="h-full w-full object-cover transition duration-1000 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
                   />
 
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
 
-                  <div className="absolute left-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/20 text-xs text-white backdrop-blur-md">
+                  <div className="absolute left-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/20 text-xs text-white">
                     {String(index + 1).padStart(2, "0")}
                   </div>
 
@@ -182,32 +195,30 @@ function Gallery() {
 
           <button
             type="button"
-            className="gallery-prev absolute left-0 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#110c12]/80 text-white/60 backdrop-blur-xl transition hover:scale-110 hover:text-white lg:flex"
+            className="gallery-prev absolute left-0 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#110c12]/80 text-white/60 lg:flex"
           >
             <ChevronLeft size={20} strokeWidth={1.2} />
           </button>
 
           <button
             type="button"
-            className="gallery-next absolute right-0 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#110c12]/80 text-white/60 backdrop-blur-xl transition hover:scale-110 hover:text-white lg:flex"
+            className="gallery-next absolute right-0 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#110c12]/80 text-white/60 lg:flex"
           >
             <ChevronRight size={20} strokeWidth={1.2} />
           </button>
-
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-14 text-center"
+          transition={{ duration: 0.4 }}
+          className="mt-12 text-center"
         >
           <p className="text-[9px] uppercase tracking-[0.35em] text-white/25">
             Drag to explore
           </p>
         </motion.div>
-
       </div>
     </section>
   );

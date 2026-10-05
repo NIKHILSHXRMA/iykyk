@@ -8,23 +8,19 @@ function Story() {
       className="relative overflow-hidden bg-[#08060a] px-6 py-28 text-white sm:px-10 sm:py-36 lg:px-20"
     >
       {/* Ambient Glow */}
+      <div className="pointer-events-none absolute -left-24 top-[20%] h-72 w-72 rounded-full bg-[#b43d68]/10 blur-[70px]" />
 
-      <div className="pointer-events-none absolute -left-37.5 top-[20%] h-87.5 w-87.5 rounded-full bg-[#b43d68]/10 blur-[130px]" />
-
-      <div className="pointer-events-none absolute -bottom-37.5 -right-25 h-87.5 w-87.5 rounded-full bg-[#70345e]/10 blur-[130px]" />
+      <div className="pointer-events-none absolute -bottom-24 -right-20 h-72 w-72 rounded-full bg-[#70345e]/10 blur-[70px]" />
 
       {/* Main Container */}
-
       <div className="relative mx-auto max-w-6xl">
-
         {/* Header */}
-
         <motion.div
           className="mb-20 text-center"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.9 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45 }}
         >
           <div className="mb-5 flex items-center justify-center gap-3">
             <Sparkles
@@ -52,37 +48,32 @@ function Story() {
         </motion.div>
 
         {/* Story Grid */}
-
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-24">
-
           {/* LEFT — PHOTO */}
-
           <motion.div
             className="relative mx-auto w-full max-w-md"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
             {/* Decorative Border */}
-
             <div className="absolute -bottom-4 -left-4 h-full w-full border border-[#e8a0b5]/15" />
 
             <div className="relative aspect-4/5 overflow-hidden bg-[#120b10]">
-
               <img
                 src="/photos/komal-09.jpg"
                 alt="Komal"
-                className="h-full w-full object-cover transition duration-1000 hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
               />
 
               {/* Image Overlay */}
-
               <div className="absolute inset-0 bg-linear-to-t from-[#08060a]/60 via-transparent to-transparent" />
 
               {/* Small Heart */}
-
-              <div className="absolute bottom-5 left-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/20 backdrop-blur-md">
+              <div className="absolute bottom-5 left-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/30">
                 <Heart
                   size={16}
                   strokeWidth={1.2}
@@ -92,19 +83,21 @@ function Story() {
             </div>
 
             {/* Number */}
-
             <span className="absolute -right-4 -top-8 font-serif text-6xl italic text-white/4 sm:-right-8 sm:text-8xl">
               01
             </span>
           </motion.div>
 
           {/* RIGHT — TEXT */}
-
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 1, delay: 0.15 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.05,
+              ease: "easeOut",
+            }}
           >
             <p className="mb-6 text-[10px] uppercase tracking-[0.35em] text-[#e8a0b5]">
               Dear Komal,
@@ -112,11 +105,12 @@ function Story() {
 
             <h3 className="max-w-xl font-serif text-4xl font-normal leading-tight text-[#fff5f8] sm:text-5xl">
               Maybe you don't realize
-              <span className="text-[#e8a0b5]"> how special you are.</span>
+              <span className="text-[#e8a0b5]">
+                {" "}how special you are.
+              </span>
             </h3>
 
             <div className="mt-8 space-y-5 text-sm font-light leading-8 text-[#a9959e] sm:text-base">
-
               <p>
                 There are people who simply enter your life,
                 and then there are people who quietly change
@@ -135,11 +129,9 @@ function Story() {
                 those little moments that didn't seem
                 important at the time.
               </p>
-
             </div>
 
             {/* Quote */}
-
             <div className="mt-10 border-l border-[#e8a0b5]/40 pl-5">
               <p className="font-serif text-lg italic leading-7 text-white/75">
                 "Some people become a beautiful part of
@@ -149,7 +141,6 @@ function Story() {
             </div>
 
             {/* Signature */}
-
             <div className="mt-10 flex items-center gap-4">
               <div className="h-px w-10 bg-[#e8a0b5]/40" />
 
@@ -158,17 +149,15 @@ function Story() {
               </span>
             </div>
           </motion.div>
-
         </div>
 
         {/* Bottom transition */}
-
         <motion.div
           className="mt-28 flex flex-col items-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45 }}
         >
           <div className="h-16 w-px bg-linear-to-b from-[#e8a0b5]/40 to-transparent" />
 
@@ -176,7 +165,6 @@ function Story() {
             And then...
           </span>
         </motion.div>
-
       </div>
     </section>
   );

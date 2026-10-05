@@ -7,16 +7,14 @@ function LoveLetter() {
       id="letter"
       className="relative overflow-hidden bg-[#0a070b] px-6 py-28 sm:px-10 lg:px-20"
     >
-      {/* Background Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-125 w-125 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e8a0b5]/5 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e8a0b5]/5 blur-[70px]" />
 
       <div className="relative mx-auto max-w-4xl">
-        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45 }}
           className="mb-14 text-center"
         >
           <div className="mb-5 flex items-center justify-center gap-3">
@@ -42,15 +40,13 @@ function LoveLetter() {
           </h2>
         </motion.div>
 
-        {/* Letter */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="relative rounded-4xl border border-white/10 bg-[#120c11]/80 p-7 shadow-2xl backdrop-blur-xl sm:p-12 lg:p-16"
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.55 }}
+          className="relative rounded-4xl border border-white/10 bg-[#120c11] p-7 shadow-xl sm:p-12 lg:p-16"
         >
-          {/* Decorative Hearts */}
           <div className="absolute right-7 top-7 opacity-20">
             <Heart
               size={28}
@@ -95,12 +91,11 @@ function LoveLetter() {
             </p>
           </div>
 
-          {/* Quote */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.45 }}
             className="my-12 border-l border-[#e8a0b5]/40 pl-6 sm:pl-8"
           >
             <p className="font-serif text-xl italic leading-8 text-white/80 sm:text-2xl">
@@ -121,7 +116,6 @@ function LoveLetter() {
             </p>
           </div>
 
-          {/* Signature */}
           <div className="mt-14 text-right">
             <p className="font-serif text-lg italic text-white/40">
               With a little courage,
@@ -132,7 +126,6 @@ function LoveLetter() {
             </p>
           </div>
 
-          {/* Bottom Decoration */}
           <div className="mt-12 flex items-center justify-center gap-3">
             <div className="h-px w-16 bg-white/10" />
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Intro from "./components/Intro";
@@ -6,23 +6,22 @@ import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
 import FloatingHearts from "./components/FloatingHearts";
 import Hero from "./components/Hero";
-import Story from "./components/Story";
-import Memories from "./components/Memories";
-import LoveLetter from "./components/LoveLetter";
-import Reasons from "./components/Reasons";
-import Gallery from "./components/Gallery";
-import FinalMessage from "./components/FinalMessage";
-import Proposal from "./components/Proposal";
-import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
+
+const Story = lazy(() => import("./components/Story"));
+const Memories = lazy(() => import("./components/Memories"));
+const LoveLetter = lazy(() => import("./components/LoveLetter"));
+const Reasons = lazy(() => import("./components/Reasons"));
+const Gallery = lazy(() => import("./components/Gallery"));
+const FinalMessage = lazy(() => import("./components/FinalMessage"));
+const Proposal = lazy(() => import("./components/Proposal"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   const [started, setStarted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleEnter = () => {
-    console.log("❤️ Open My Heart clicked");
-
     setStarted(true);
     setIsPlaying(true);
   };
@@ -33,7 +32,6 @@ function App() {
 
   return (
     <main className="min-h-screen bg-[#08060a] text-white">
-
       <ScrollProgress />
 
       <AnimatePresence mode="wait">
@@ -51,33 +49,33 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            duration: 1,
+            duration: 0.5,
             ease: "easeOut",
           }}
         >
-
           <FloatingHearts />
 
           <Navbar />
 
           <Hero />
 
-          <Story />
+          <Suspense fallback={null}>
+            <Story />
 
-          <Memories />
+            <Memories />
 
-          <LoveLetter />
+            <LoveLetter />
 
-          <Reasons />
+            <Reasons />
 
-          <Gallery />
+            <Gallery />
 
-          <FinalMessage />
+            <FinalMessage />
 
-          <Proposal />
+            <Proposal />
 
-          <Footer />
-
+            <Footer />
+          </Suspense>
         </motion.div>
       )}
 
@@ -87,7 +85,6 @@ function App() {
           onToggle={toggleMusic}
         />
       )}
-
     </main>
   );
 }

@@ -14,21 +14,21 @@ const memories = [
     number: "02",
     title: "You became special",
     text: "Without even trying, you slowly became someone I started looking forward to.",
-    image: "/photos/komal-02.jpg",
+    image: "/photos/komal-03.jpg",
   },
   {
     date: "THE LITTLE THINGS",
     number: "03",
     title: "It's always the little things",
     text: "The conversations, the smiles, the random moments — somehow they all mean more than they should.",
-    image: "/photos/komal-03.jpg",
+    image: "/photos/komal-05.jpg",
   },
   {
     date: "TODAY",
     number: "04",
     title: "And here we are",
     text: "Maybe this isn't just another memory. Maybe it's the beginning of something beautiful.",
-    image: "/photos/komal-04.jpg",
+    image: "/photos/komal-08.jpg",
   },
 ];
 
@@ -36,21 +36,21 @@ function Memories() {
   return (
     <section
       id="memories"
-      className="relative overflow-hidden bg-[#08060a] px-5 py-28 sm:px-8 lg:px-16"
+      className="relative overflow-hidden bg-[#08060a] px-5 py-24 sm:px-8 lg:px-16"
     >
-      <div className="pointer-events-none absolute left-1/2 top-40 h-125 w-125 -translate-x-1/2 rounded-full bg-[#d86b91]/10 blur-[140px]" />
+      <div className="pointer-events-none absolute left-1/2 top-40 h-72 w-72 -translate-x-1/2 rounded-full bg-[#d86b91]/10 blur-[70px]" />
 
-      <div className="relative mx-auto mb-20 max-w-6xl">
+      <div className="relative mx-auto mb-16 max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="flex items-center gap-3"
         >
-          <span className="h-px w-10 bg-[#e8a0b5]/50" />
+          <span className="h-px w-8 bg-[#e8a0b5]/50" />
 
-          <p className="text-[10px] uppercase tracking-[0.35em] text-[#e8a0b5]">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[#e8a0b5]">
             Chapter Two
           </p>
 
@@ -62,10 +62,10 @@ function Memories() {
         </motion.div>
 
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.9, delay: 0.1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="mt-5 max-w-3xl font-serif text-5xl font-light leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-8xl"
         >
           A few moments
@@ -79,21 +79,21 @@ function Memories() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-7 max-w-xl text-sm leading-7 text-white/45 sm:text-base"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-6 max-w-xl text-sm leading-7 text-white/45 sm:text-base"
         >
           Not every memory needs a photograph. Some simply stay with you.
         </motion.p>
       </div>
 
       <div className="relative mx-auto max-w-6xl">
-        <div className="space-y-24">
+        <div className="space-y-20">
           {memories.map((memory, index) => (
             <motion.article
               key={memory.number}
               initial={{
                 opacity: 0,
-                y: 70,
+                y: 25,
               }}
               whileInView={{
                 opacity: 1,
@@ -101,32 +101,32 @@ function Memories() {
               }}
               viewport={{
                 once: true,
-                amount: 0.2,
+                amount: 0.15,
               }}
               transition={{
-                duration: 0.9,
-                delay: index * 0.05,
+                duration: 0.5,
+                ease: "easeOut",
               }}
-              className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-20 ${
+              className={`grid items-center gap-8 lg:grid-cols-2 lg:gap-20 ${
                 index % 2 !== 0
                   ? "lg:[&>*:first-child]:order-2"
                   : ""
               }`}
             >
-              <div className="group relative">
-                <div className="absolute -inset-3 rounded-4xl bg-[#e8a0b5]/5 opacity-0 blur-2xl transition duration-700 group-hover:opacity-100" />
-
+              <div className="relative">
                 <div className="relative aspect-4/5 overflow-hidden rounded-3xl border border-white/10 bg-[#110c12]">
                   <img
                     src={memory.image}
                     alt={memory.title}
-                    className="h-full w-full object-cover grayscale-20 transition duration-1000 group-hover:scale-105 group-hover:grayscale-0"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
                   />
 
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-black/10" />
 
                   <div className="absolute left-5 top-5">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/20 font-serif text-sm text-white backdrop-blur-md">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/20 font-serif text-sm text-white">
                       {memory.number}
                     </span>
                   </div>
@@ -144,7 +144,7 @@ function Memories() {
                   {memory.date}
                 </p>
 
-                <div className="mt-5 flex items-start gap-5">
+                <div className="mt-4 flex items-start gap-4">
                   <div className="hidden pt-2 sm:block">
                     <span className="font-serif text-4xl font-light text-white/15">
                       {memory.number}
@@ -156,13 +156,13 @@ function Memories() {
                       {memory.title}
                     </h3>
 
-                    <div className="mt-6 h-px w-16 bg-[#e8a0b5]/40" />
+                    <div className="mt-5 h-px w-14 bg-[#e8a0b5]/40" />
 
-                    <p className="mt-6 max-w-md text-sm leading-7 text-white/45 sm:text-base">
+                    <p className="mt-5 max-w-md text-sm leading-7 text-white/45 sm:text-base">
                       {memory.text}
                     </p>
 
-                    <div className="mt-8 flex items-center gap-3 text-white/30">
+                    <div className="mt-7 flex items-center gap-3 text-white/30">
                       <Heart
                         size={14}
                         strokeWidth={1.2}
@@ -182,11 +182,11 @@ function Memories() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="relative mx-auto mt-32 flex max-w-6xl flex-col items-center text-center"
+        transition={{ duration: 0.5 }}
+        className="relative mx-auto mt-24 flex max-w-6xl flex-col items-center text-center"
       >
         <Heart
           size={18}
